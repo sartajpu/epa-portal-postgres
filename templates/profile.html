@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile - EPA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cloudflare.com">
+</head>
+<body class="dashboard-body">
+
+    <div class="sidebar">
+        <div class="logo-details"><i class="fa-solid fa-person-running"></i><span class="logo_name">EPA Portal</span></div>
+        <ul class="nav-links">
+            <li><a href="/dashboard"><i class="fa-solid fa-house"></i><span class="links_name">Dashboard</span></a></li>
+            <li><a href="/profile" class="active"><i class="fa-solid fa-user"></i><span class="links_name">My Profile</span></a></li>
+            <li><a href="/update_profile_page"><i class="fa-solid fa-user-gear"></i><span class="links_name">Update Profile</span></a></li>
+            <li class="log_out"><a href="/logout"><i class="fa-solid fa-right-from-bracket"></i><span class="links_name">Logout</span></a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <div class="welcome-text"><h2>My Profile</h2></div>
+            <div class="profile-details">
+                <img src="{{ url_for('static', filename='uploads/' + profile_pic) }}" alt="DP" class="avatar-img">
+                <span class="admin_name">{{ session['user_name'] }}</span>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <div class="card-box" style="max-width: 600px; margin: 0 auto; text-align: center;">
+                <div class="card-header"><h3><i class="fa-solid fa-id-card"></i> Student Physical Fit Card</h3></div>
+                
+                <img src="{{ url_for('static', filename='uploads/' + profile_pic) }}" alt="DP" style="width: 130px; height: 130px; border-radius: 50%; border: 3px solid #e53935; object-fit: cover; margin: 20px 0;">
+                
+                <div class="user-info-list" style="text-align: left;">
+                    <div class="info-item"><span class="label">Cadet Name:</span> <span class="val">{{ session['user_name'] }}</span></div>
+                    <div class="info-item"><span class="label">Target Target:</span> <span class="val" style="color: #4caf50;">{{ target_post }}</span></div>
+                    <div class="info-item"><span class="label">Batch Schedule:</span> <span class="val">{{ batch_time }}</span></div>
+                    <div class="info-item"><span class="label">Height (CM):</span> <span class="val">{{ student_height }} cm</span></div>
+                    <div class="info-item"><span class="label">Chest (Inch):</span> <span class="val">{{ student_chest }} inches</span></div>
+                    <div class="info-item"><span class="label">1600m Running Record:</span> <span class="val" style="color: #ff9800; font-weight: bold;">{{ running_1600m }}</span></div>
+                    <div class="info-item"><span class="label">Mobile Number:</span> <span class="val" style="color: #888;">{{ user_mobile }} (Locked)</span></div>
+                    <div class="info-item"><span class="label">Email Address:</span> <span class="val" style="color: #888;">{{ user_email }} (Locked)</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

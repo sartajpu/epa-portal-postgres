@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+     <div class="sartaz-page">
+        <h1>Sartaj Page here ! </h1>
+        <h4>visit the site -  <a class="site-btn" href="https://sartazpage.web.app/" target="_blank">Now!</a></h4>
+    </div>
+
+    <div class="form-container">
+        <h2>Reset Password</h2>
+        
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <p class="error-msg">{{ message }}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <form action="/forgot" method="POST">
+            <div class="input-group">
+                <label>Registered Email Address</label>
+                <input type="email" name="email" placeholder="Enter your registered email" required>
+            </div>
+
+            <div class="input-group">
+                <label>New Password</label>
+                <input type="password" name="new_password" placeholder="Enter new password" required>
+            </div>
+
+            <div class="input-group">
+                <label>Confirm New Password</label>
+                <input type="password" name="re_password" placeholder="Re-enter new password" required>
+            </div>
+
+            <button type="submit" class="btn">Update Password</button>
+        </form>
+        
+        <p class="switch-form-reg"><a href="/login">Back to Login</a></p>
+    </div>
+</body>
+</html>

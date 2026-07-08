@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <!-- CSS File Link -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="sartaz-page">
+        <h1>Sartaj Page here ! </h1>
+        <h4>visit the site -  <a class="site-btn" href="https://sartazpage.web.app/" target="_blank">Now!</a></h4>
+    </div>
+
+    <div class="form-container">
+        <h2>Create New Account</h2>
+        
+        <!-- Flask flash messages display karne ke liye -->
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <p class="error-msg">{{ message }}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <form action="/register" method="POST">
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" name="name" placeholder="Enter your full name" required>
+            </div>
+            
+            <div class="input-group">
+                <label>Mobile Number</label>
+                <input type="tel" name="mobile" placeholder="Enter mobile number" required>
+            </div>
+
+            <div class="input-group">
+                <label>Email Address</label>
+                <input type="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Create password" required>
+            </div>
+
+            <div class="input-group">
+                <label>Confirm Password</label>
+                <input type="password" name="re_password" placeholder="Re-enter password" required>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" name="terms" id="terms" required>
+                <label for="terms">I accept all Terms & Conditions</label>
+            </div>
+
+            <button type="submit" class="btn">Register Now</button>
+        </form>
+        
+        <p class="switch-form-reg">Already have an account? <a href="/login">Login here</a></p>
+    </div>
+</body>
+</html>

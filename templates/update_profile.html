@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Profile - EPA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cloudflare.com">
+</head>
+<body class="dashboard-body">
+
+    <div class="sidebar">
+        <div class="logo-details"><i class="fa-solid fa-person-running"></i><span class="logo_name">EPA Portal</span></div>
+        <ul class="nav-links">
+            <li><a href="/dashboard"><i class="fa-solid fa-house"></i><span class="links_name">Dashboard</span></a></li>
+            <li><a href="/profile"><i class="fa-solid fa-user"></i><span class="links_name">My Profile</span></a></li>
+            <li><a href="/update_profile_page" class="active"><i class="fa-solid fa-user-gear"></i><span class="links_name">Update Profile</span></a></li>
+            <li class="log_out"><a href="/logout"><i class="fa-solid fa-right-from-bracket"></i><span class="links_name">Logout</span></a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <div class="welcome-text"><h2>Update Profile</h2></div>
+            <div class="profile-details">
+                <img src="{{ url_for('static', filename='uploads/' + profile_pic) }}" alt="DP" class="avatar-img">
+                <span class="admin_name">{{ session['user_name'] }}</span>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <div class="card-box" style="max-width: 550px; margin: 0 auto;">
+                <div class="card-header"><h3><i class="fa-solid fa-user-pen"></i> Update Cadet Physical Details</h3></div>
+                
+                <form action="/update_profile" method="POST" enctype="multipart/form-data">
+                    <div class="input-group">
+                        <label>Cadet Full Name</label>
+                        <input type="text" name="name" value="{{ session['user_name'] }}" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Target Job (e.g. Bihar Police, Army, SSC GD)</label>
+                        <input type="text" name="target_post" value="{{ target_post }}" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Batch Timing (e.g. Morning 5 AM, Evening 4 PM)</label>
+                        <input type="text" name="batch_time" value="{{ batch_time }}" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Height (in cm)</label>
+                        <input type="text" name="student_height" value="{{ student_height }}">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Chest size (in inches)</label>
+                        <input type="text" name="student_chest" value="{{ student_chest }}">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Your Best 1600m Time (e.g. 5:20)</label>
+                        <input type="text" name="running_1600m" value="{{ running_1600m }}">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Update Profile Image (DP)</label>
+                        <input type="file" name="profile_pic" accept="image/*" style="padding: 5px;">
+                    </div>
+
+                    <button type="submit" class="btn" style="margin-top: 15px; background-color: #e53935;">Apply Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

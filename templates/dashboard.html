@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ekderwa Physical Academy - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cloudflare.com">
+</head>
+<body class="dashboard-body">
+
+    <!-- MINIMAL SIDEBAR -->
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class="fa-solid fa-person-running"></i>
+            <span class="logo_name">EPA Portal</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="/dashboard" class="active">
+                    <i class="fa-solid fa-house"></i>
+                    <span class="links_name">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="/profile">
+                    <i class="fa-solid fa-user"></i>
+                    <span class="links_name">My Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="/update_profile_page">
+                    <i class="fa-solid fa-user-gear"></i>
+                    <span class="links_name">Update Profile</span>
+                </a>
+            </li>
+            <li class="log_out">
+                <a href="/logout">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span class="links_name">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <header>
+            <div class="welcome-text">
+                <h2>Dashboard</h2>
+            </div>
+            <div class="profile-details">
+                <img src="{{ url_for('static', filename='uploads/' + profile_pic) }}" alt="DP" class="avatar-img">
+                <span class="admin_name">{{ session['user_name'] }}</span>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <!-- ACADEMY BANNER -->
+            <div class="welcome-banner" style="background: linear-gradient(135deg, #d32f2f, #1976d2); padding: 30px; border-radius: 12px; margin-bottom: 30px; color: #fff;">
+                <h1 style="margin-bottom: 10px;">जय हिन्द, {{ session['user_name'] }}! 🇮🇳</h1>
+                <p>"सपने वो नहीं जो नींद में आते हैं, सपने वो हैं जो आपको सोने नहीं देते।" वर्दी पहनने का संकल्प अब होगा पूरा।</p>
+            </div>
+
+            <!-- PHYSICAL ACADEMY OVERVIEW BOXES -->
+            <div class="overview-boxes">
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Target Target Job</div>
+                        <div class="number" style="color: #4caf50; font-size: 20px; margin-top: 5px;">{{ target_post }}</div>
+                    </div>
+                    <i class="fa-solid fa-shield-halved cart"></i>
+                </div>
+
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Training Batch</div>
+                        <div class="number" style="color: #2196f3; font-size: 20px; margin-top: 5px;">{{ batch_time }}</div>
+                    </div>
+                    <i class="fa-solid fa-clock cart two"></i>
+                </div>
+
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Best 1600m Time</div>
+                        <div class="number" style="color: #ff9800; font-size: 20px; margin-top: 5px;">{{ running_1600m }} Mins</div>
+                    </div>
+                    <i class="fa-solid fa-stopwatch cart three"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

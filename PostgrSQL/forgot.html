@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forgot Password</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Reset Password</h2>
+    <form id="forgotForm">
+        <!-- User email ya mobile kuch bhi bhaar sakta hai -->
+        <input type="text" id="identifier" placeholder="Email or Mobile Number" required>
+        <input type="password" id="newPassword" placeholder="Enter New Password" required>
+        <button type="submit" class="btn-forgot">Update Password</button>
+    </form>
+    
+    <div class="links-container">
+        <a href="login.html">Back to Login</a>
+        <a href="register.html">Create Account</a>
+    </div>
+</div>
+
+<script>
+    document.getElementById('forgotForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const identifier = document.getElementById('identifier').value;
+        const newPassword = document.getElementById('newPassword').value;
+
+        const response = await fetch('/api/forgot-password', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ identifier, newPassword })
+        });
+
+        const data = await response.json();
+        
+        if (response.ok) {
+            alert('Password reset successful! Please login.');
+            window.location.href = 'login.html';
+        } else {
+            alert('Error: ' + data.error);
+        }
+    });
+</script>
+
+</body>
+</html>
