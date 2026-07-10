@@ -45,9 +45,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://username:password@localhos
 
 ### 5. Run the Application
 ```bash
-python app.py
+python main.py
 ```
-Open `http://127.0.0` in your web browser.
+Open `http://127.0.0` or `http://192.168.1.9...` in your web browser.
 
 ## 🤝 Contributing
 Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
